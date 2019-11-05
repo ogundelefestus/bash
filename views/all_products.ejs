@@ -1,0 +1,56 @@
+<% include _layouts/header %>
+
+<div class="container">
+    <div class="row products">
+        <h3 style="text-align: center">These are the markets that sell <strong><%= search %></strong> close to you</h3>
+        <!-- <% products.forEach(function(p){ %>
+            <div class="col-xs-12 col-md-4 p">
+                <a class="pa" href="/products/<%= p.category %>/<%= p.slug %>">
+                    <img class="pimage" src="<%= p.image %>" alt="">
+                </a>
+                <h3><%= p.title %></h3>
+                <h4><%= p.location %></h4>
+                <a class="vd" href="/products/<%= p.category %>/<%= p.slug %>">View Details</a>
+            </div>
+        <% }); %>   -->
+        <!-- Product Single -->
+        <% products.forEach(function(product){ %>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+
+                <div class="product product-single">
+                    <div class="product-thumb">
+                        <img src="<%= product.image %>" alt="">
+                    </div>
+                    <div class="product-body">
+                        
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o empty"></i>
+                        </div>
+                        
+                        <!-- <h2 class="product-name">
+                            <a href="#">
+                                <%= product.category %>
+                            </a>
+                        </h2>
+                        <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2> -->
+                        <a class="vd" href="/products/<%=product.category%>/<%=product.slug %>">View details</a>
+                        <h2 class="product-name">
+                            
+                                <%= product.location %>
+                            </a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+
+        <!-- /Product Single -->
+    </div>
+</div>
+
+
+<% include _layouts/footer %>

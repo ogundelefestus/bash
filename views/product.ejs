@@ -1,0 +1,89 @@
+<% include _layouts/header %>
+
+    <!--Main layout-->
+
+
+    <div class="container">
+        <div class="product product-details clearfix">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="product-main-view" class="slick-initialized slick-slider">
+                        <div class="slick-list draggable">
+                            <div class="slick-track" style="opacity: 1; width: 2220px;">
+                                <div class="product-view slick-slide slick-current slick-active col-md-6 mb-4" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 555px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1; overflow: hidden;">
+                                    <img class="img-fluid" src="<%= p.image %>" alt="">
+                                    <img role="presentation" src="../img/logo.png" class="zoomImg" style="position: absolute; top: 0px; left: 0px; opacity: 0; width: 1200px; height: 1200px; border: none; max-width: none; max-height: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="product-view" class="slick-initialized slick-slider">
+                        <div class="slick-list draggable" style="padding: 0px 50px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-body">
+                        <h2 class="product-name">
+                            <%= p.title %>
+                        </h2>
+                        
+                        <div>
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o empty"></i>
+                            </div>
+                            <a href="#">3 Review(s) / Add Review</a>
+                        </div>
+                        <p><strong>Availability:</strong>
+                            <%= p.location %>
+                        </p>
+                        <p><strong>Brand:</strong> E-SHOP</p>
+                        <p>
+                            <%= p.desc %>.</p>
+                        <p>
+                        <p><strong>Opened from : <%= p.open_time %> - <%= p.close_time %>.</strong></p>
+                            <% if (loggedIn) { %>
+                                <!-- <a href="/cart/add/<%= p.slug %>">
+                                    <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+                                      <i class="fas fa-shopping-cart ml-1"></i>
+                                    </button>
+                                  </a> -->
+
+                            <% } else {%>
+                                <p>You must be logged in to purchase items.</p>
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="map"></div>
+
+    </div>
+
+    <script>
+        var map;
+        // Initialize and add the map
+function initMap() {
+  // The location of Osogbo
+  var Osogbo = {lat: 7.7827, lng: 4.5418};
+  // The map, centered at Osogbo
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 13, center:Osogbo,gestureHandling: 'cooperative'});
+  // The marker, positioned at Osogbo
+  var marker = new google.maps.Marker({position: Osogbo, map: map, title: 'Market Location'});
+}
+
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxzpFP0aFHn5cUj5Q64a7Cwq__MrzTlKE&callback=initMap"
+      async defer></script>
+  
+    <!--Main layout-->
+
+
+
+    <% include _layouts/footer %>

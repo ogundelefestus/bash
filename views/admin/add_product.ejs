@@ -1,0 +1,77 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Add a Market</h2>
+<a href="/admin/products" class="btn btn-primary">Back to all Markets</a>
+<br><br>
+
+<form method="post" action="/admin/products/add-product" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Description</label>
+        <textarea name="desc" class="form-control" cols="30" rows="10" placeholder="Description"><%= desc %></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="">Category</label>
+        <select name="category" class="form-control">
+            <% categories.forEach(function(cat){ %>
+                <option value="<%= cat.slug %>"><%= cat.title %></option>
+            <% }); %>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="">Location</label>
+        <input type="text" class="form-control" name="location" value="<%= location %>" placeholder="Location">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Open Time</label>
+        <input type="text" class="form-control" name="open_time" value="<%= open_time %>" placeholder="Open Time">
+    </div>
+
+    <div class="form-group">
+        <label for="">Close Time</label>
+        <input type="text" class="form-control" name="close_time" value="<%= close_time %>" placeholder="Close Time">
+    </div>
+
+    <div class="form-group">
+        <label for="">Products Sold</label>
+        <input type="text" class="form-control" name="goods" value="<%= goods %>" placeholder="Products Sold">
+    </div>
+
+    <div class="form-group">
+        <label for="">Image</label>
+        <input type="file" class="form-control" name="image" id="img">
+        <img src="#" id="imgPreview" alt="">
+    </div>
+    
+    <button class="btn btn-default">Submit</button>
+</form>
+
+<script>
+    
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+                $("#imgPreview").attr('src', e.target.result).width(100).height(100);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#img").change(function() {
+        readURL(this);
+    });
+    
+</script>
+
+<%- include('../_layouts/adminfooter') %>

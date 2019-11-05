@@ -1,0 +1,73 @@
+
+<% include _layouts/header %>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+            <main>
+                <div class="container">
+                <!--Section: Products v.3-->
+                <section class="text-center mb-4">
+                    <!--Grid row-->
+                    <div class="row wow fadeIn">
+                    <!--Grid column-->
+                     <% products.forEach(function(product){ %>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <!--Card-->
+                        <div class="card">
+                            <!--Card image-->
+                                <div class="view overlay">
+                                    <img src="<%= product.image %>" class="card-img-top" width="50px" height="150px"
+                                    alt="">
+                                    <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                            <!--Card image-->
+
+                            <!--Card content-->
+                                <div class="card-body text-center">
+                                    <!-- Category & Title -->
+                                    <h5>  
+                                    <strong>
+                                        <a href="" class="dark-grey-text"><%= product.title %><br>
+                                        <span class="badge badge-pill danger-color"><%= product.category %></span>
+                                        </a>
+                                    </strong>
+                                    </h5>
+                                    <a href="" class="grey-text">
+                                    <h5><a class="vd" href="/products/<%=product.category%>/<%=product.slug %>">View details</a></h5>
+                                    </a>
+                                    <h4 class="font-weight-bold blue-text">
+                                    <strong><%= product.location %></strong>
+                                    </h4>
+                                </div>
+                            <!--Card content-->
+                        </div>
+                        <!--Card-->
+                        
+                    </div> 
+                    <% }) %>
+                    <!-- Grid column -->
+                    </div></div>
+                    <!-- Grid row -->
+                </section>
+                 <!--Section: Products v.3-->
+
+               
+
+                </div>
+            </main>
+            <!--Main layout-->
+
+    </div>
+
+
+
+    <div class="col-sm-12">
+    <%- content %>
+
+    </div>
+</div>
+
+<% include _layouts/footer %>

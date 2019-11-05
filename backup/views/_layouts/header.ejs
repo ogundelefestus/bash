@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><%= title %></title>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+
+    <body>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark scrolling-navbar">
+        <div class="container">
+
+          <!-- Brand -->
+          <a class="navbar-brand waves-effect" href="/" target="_blank">
+            <strong class="blue-text"><a class="blue-text" href="/">Osun State Markets</a></strong>
+          </a>
+
+          <!-- Collapse -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Links -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link waves-effect" href="/" target="_blank"></a>
+              </li>
+            </ul>
+
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <% pages.forEach(function(page){ %>
+                    <% if (page.slug == "home") { %>
+                        <li class="nav-item"><a class="nav-link waves-effect" href="/"><%= page.title %></a></li>
+                    <% } else {%>
+                        <li class="nav-item"><a class="nav-link waves-effect" href="/<%= page.slug %>"><%= page.title %></a></li>
+                    <% } %>
+                <% }); %>
+              </li>
+              <li class="nav-item">
+               <a class="nav-link waves-effect" href="/cart/checkout">My Cart (
+               <% if (typeof cart !== "undefined") { %>
+               <%= cart.length %>
+               <% } else {%>
+                0
+               <% } %>
+                 )</a>
+              </li>
+              <% if (user) { %>
+              <li class="nav-item"><a class="nav-link waves-effect border border-light rounded" href="/users/logout">Hi, <%= user.username %> ( logout )<i class="fab fa-github mr-2"></i></a></li>
+                <% } else {%>
+              <li class="nav-item"><a class="nav-link waves-effect" href="/users/register">Register</a></li>
+              <li class="nav-item"><a class="nav-link waves-effect" href="/users/login">Log in</a></li>
+                <% } %>
+                <% if (user && user.admin == 1) { %>
+              <li class="nav-item"><a class="nav-link waves-effect" href="/admin/pages">Admin Area</a></li>
+                <% }%>
+            </ul>
+
+          </div>
+
+        </div>
+      </nav>
+      <%# <!-- Navbar --> %>
+
+
+            <div class="container-fluid">
+                <%- messages('messages', locals) %>
+                
+                <% if (errors) {%>
+                    <% errors.forEach(function(error) { %>
+                    <div class="alert alert-danger">
+                        <%= error.msg %>
+                    </div>
+                    <% });%>
+                <% }%>
+        
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <h3>Categories</h3>
+                        <ul class="list-group" style="padding-top: 70px;">
+                            <li class="list-group-item"><a href="/products">All Markets</a></li>
+                            <% categories.forEach(function(c){ %>
+                                <li class="list-group-item"><a href="/products/<%= c.slug %>"><%= c.title %></a></li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-md-1"></div>
+                    <div class="col-xs-12 col-md-8" style="padding-top: 70px;">
+                        
+                    
+
+
+
+
+
