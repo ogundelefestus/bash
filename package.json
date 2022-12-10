@@ -15,7 +15,7 @@
     "cloudinary": "^1.14.0",
     "connect-flash": "^0.1.1",
     "ejs": "^2.5.7",
-    "express": "^4.15.3",
+    "express": "^4.17.3",
     "express-fileupload": "^0.1.4",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.5",
